@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "AI-notes",
+  "version": "1.0.0",
+  "icons": {
+    "32": "images/github-icon.png"
+  },
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "permissions": [
+    "tabGroups",
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "js": ["pop.js"],
+      "matches": [
+        "https://*/*",
+        "https://*/*"
+      ]
+    }
+  ]
+}

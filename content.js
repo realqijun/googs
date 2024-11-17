@@ -1,9 +1,19 @@
-
+// Scripts that has access to DOM(content) of website
 
 const article = document.querySelector("article");
 
 // `document.querySelector` may return null if the selector doesn't match anything.
 if (article) {
+
+  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    // Check if the message contains a color property
+    if (message.color) {
+      // Use the color to modify the webpage
+      document.body.style.backgroundColor = message.color;
+      console.log(`Background color changed to: ${message.color}`);
+    }
+  });
+
   const text = article.textContent;
   const wordMatchRegExp = /[^\s]+/g; // Regular expression
   const words = text.matchAll(wordMatchRegExp);

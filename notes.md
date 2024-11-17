@@ -1,0 +1,1 @@
+1. Items in action prevents background.js from running upon clicking

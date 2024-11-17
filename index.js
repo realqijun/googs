@@ -1,3 +1,5 @@
+// Button in the extension popup
+
 async function main() {
   let [tab] = await chrome.tabs.query({ active: true});
   chrome.scripting.executeScript({

@@ -12,7 +12,7 @@
     "tabs"
   ],
   "action": {
-    "default_popup": "index.html"
+    "default_popup": "test/index.html"
   },
   "content_scripts": [
     {

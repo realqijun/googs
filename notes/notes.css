@@ -1,0 +1,44 @@
+#notes-container {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 300px;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 9999;
+}
+
+.note {
+  background: yellow;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
+  cursor: text;
+}
+
+#add-note-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 10000;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#clear-notes-button {
+  position: fixed;
+  top: 50px;
+  left: 10px;
+  z-index: 10000;
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}

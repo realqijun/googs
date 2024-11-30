@@ -9,18 +9,17 @@
     "tabGroups",
     "activeTab",
     "scripting",
-    "tabs"
+    "tabs",
+    "storage"
   ],
   "action": {
     "default_popup": "test/index.html"
   },
   "content_scripts": [
     {
-      "js": ["content.js"],
-      "matches": [
-        "https://*/*",
-        "https://*/*"
-      ]
+      "js": ["notes/notes.js"],
+      "css": ["notes/notes.css"],
+      "matches": ["<all_urls>"]
     }
   ],
   "background": {

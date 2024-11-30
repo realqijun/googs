@@ -37,8 +37,8 @@ async function reset() {
 }
 
 async function initDefaults() {
-  if (!('aiOriginTrial' in chrome)) {
-    showResponse('Error: chrome.aiOriginTrial not supported in this browser');
+  if (!('languageModel' in ai)) {
+    showResponse('Error: ai.languageModel API not supported in this browser');
     return;
   }
   const defaults = await ai.languageModel.capabilities();
@@ -50,10 +50,7 @@ async function initDefaults() {
     return;
   }
   sliderTemperature.value = defaults.defaultTemperature;
-  // Pending https://issues.chromium.org/issues/367771112.
-  // sliderTemperature.max = defaults.maxTemperature;
   if (defaults.defaultTopK > 3) {
-    // limit default topK to 3
     sliderTopK.value = 3;
     labelTopK.textContent = 3;
   } else {
@@ -97,7 +94,7 @@ buttonPrompt.addEventListener('click', async () => {
   showLoading();
   try {
     const params = {
-      systemPrompt: 'You are a helpful and friendly assistant.',
+      systemPrompt: 'You are a helpful and friendly assistant. You are to answer the user with any definitions they may need. You must return it in plaintext and not formatted to markdown or any other type.',
       temperature: sliderTemperature.value,
       topK: sliderTopK.value
     };

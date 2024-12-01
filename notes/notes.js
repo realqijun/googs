@@ -14,17 +14,37 @@ chrome.storage.local.get(pageKey, (data) => {
 // Add a note
 function createNote() {
   const note = document.createElement("div");
+  const button = createRemoveButton();
   note.className = "note";
   note.contentEditable = "true";
-  note.textContent = "New Note";
+  note.appendChild(button);
+  note.addEventListener("mouseover", () => showRemoveButton(button));
   notesContainer.appendChild(note);
   saveNotes();
+}
+
+function createRemoveButton() {
+    const removeButton = document.createElement("button");
+    removeButton.className = "remove-note-button";
+    removeButton.textContent = "X";
+    removeButton.contentEditable = "false";
+    removeButton.addEventListener("click", () => deleteNote(removeButton.parentNode));
+    return removeButton;
 }
 
 // Save notes to Chrome's local storage
 function saveNotes() {
   const notesHTML = notesContainer.innerHTML;
   chrome.storage.local.set({ [pageKey]: notesHTML });
+}
+
+function showRemoveButton(button) {
+    button.style.display = "inline-block";
+}
+
+function deleteNote(note) {
+    EventTarget.parentNode.remove();
+    saveNotes();
 }
 
 // Add a button to create notes
@@ -39,7 +59,6 @@ function clearNotes() {
     while (notesContainer.firstChild) {
       notesContainer.removeChild(notesContainer.firstChild);
     }
-    document.body.remove(notesContainer);
   }
 }
 
@@ -48,6 +67,12 @@ clearButton.id = "clear-notes-button";
 clearButton.textContent = "Clear Notes";
 clearButton.onclick = clearNotes;
 document.body.appendChild(clearButton);
+
+function deleteNote(note) {
+    if (confirm("Are you sure you want to delete this note?")) {
+      notesContainer.removeChild(note);
+    }
+};
 
 // Listen for changes in the notes and save them
 notesContainer.addEventListener("input", saveNotes);

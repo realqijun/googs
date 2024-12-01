@@ -3,7 +3,7 @@
   "name": "Googs",
   "version": "1.0.0",
   "icons": {
-    "32": "images/github-icon.png"
+    "32": "images/googs32.png"
   },
   "permissions": [
     "tabGroups",

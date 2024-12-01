@@ -34,12 +34,12 @@ addButton.textContent = "Add Note";
 addButton.onclick = createNote;
 document.body.appendChild(addButton);
 
+// Clear all notes
 function clearNotes() {
   if (confirm("Are you sure you want to clear all notes for this page?")) {
     while (notesContainer.firstChild) {
       notesContainer.removeChild(notesContainer.firstChild);
     }
-    document.body.remove(notesContainer);
   }
 }
 
@@ -48,6 +48,14 @@ clearButton.id = "clear-notes-button";
 clearButton.textContent = "Clear Notes";
 clearButton.onclick = clearNotes;
 document.body.appendChild(clearButton);
+
+const hideButton = document.createElement("button");
+hideButton.id = "hide-notes-button";
+hideButton.textContent = "Hide Notes";
+hideButton.onclick = () => {
+  notesContainer.style.display = notesContainer.style.display === "hidden" ? "block" : "hidden";
+};
+document.body.appendChild(hideButton);
 
 // Listen for changes in the notes and save them
 notesContainer.addEventListener("input", saveNotes);

@@ -94,7 +94,7 @@ buttonPrompt.addEventListener('click', async () => {
   showLoading();
   try {
     const params = {
-      systemPrompt: 'You are a helpful and friendly assistant. You are to answer the user with any definitions they may need. You must return it in plaintext and not formatted to markdown or any other type.',
+      systemPrompt: 'You are a helpful and friendly assistant. Return your answers as plaintext only, do not include any HTML or other formatting.',
       temperature: sliderTemperature.value,
       topK: sliderTopK.value
     };

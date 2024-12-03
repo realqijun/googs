@@ -61,7 +61,7 @@
 
 #clear-notes-button { 
   position: fixed !important;
-  top: 50px !important;
+  top: 60px !important;
   left: 10px !important;
   z-index: 10000 !important;
   background: #dc3545 !important;
@@ -74,4 +74,25 @@
   block-size: 5vh !important;
   font-size: 1vw !important;
   text-align: center !important;
+}
+
+#hide-notes-button {
+  position: fixed !important;
+  top: 110px !important;
+  left: 10px !important;
+  z-index: 10000 !important;
+  background: #28a745 !important;
+  color: white !important;
+  border: none !important;
+  padding: 10px !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  font-family: Arial !important;
+  block-size: 5vh !important;
+  font-size: 1vw !important;
+  text-align: center !important;
+}
+
+[hidden] {
+  display: none !important;
 }

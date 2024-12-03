@@ -9,6 +9,22 @@ const sliderTopK = document.body.querySelector('#top-k');
 const labelTemperature = document.body.querySelector('#label-temperature');
 const labelTopK = document.body.querySelector('#label-top-k');
 
+const buttonGetHighlight = document.body.querySelector('#button-get-highlight');
+const elementHighlight = document.body.querySelector('#highlight');
+
+buttonGetHighlight.addEventListener('click', () => {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    chrome.tabs.sendMessage(tabs[0].id, { action: 'getHighlightedText' }, (response) => {
+      if (chrome.runtime.lastError) {
+        console.error(chrome.runtime.lastError.message);
+        elementHighlight.textContent = 'Error: Unable to retrieve highlighted text.';
+      } else {
+        elementHighlight.textContent = response?.highlightedText || 'No text highlighted.';
+      }
+    });
+  });
+});
+
 let session;
 
 async function runPrompt(prompt, params) {
@@ -59,6 +75,8 @@ async function initDefaults() {
   }
   sliderTopK.max = defaults.maxTopK;
   labelTemperature.textContent = defaults.defaultTemperature;
+
+
 }
 
 initDefaults();

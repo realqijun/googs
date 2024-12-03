@@ -13,11 +13,11 @@
     "storage"
   ],
   "action": {
-    "default_popup": "test/index.html"
+    "default_popup": "popup/index.html"
   },
   "content_scripts": [
     {
-      "js": ["notes/notes.js"],
+      "js": ["notes/notes.js", "notes/content.js"],
       "css": ["notes/notes.css"],
       "matches": ["<all_urls>"],
       "run_at": "document_idle"

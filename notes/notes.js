@@ -60,6 +60,7 @@ function clearNotes() {
     while (notesContainer.firstChild) {
       notesContainer.removeChild(notesContainer.firstChild);
     }
+    saveNotes(); // Save changes
   }
 }
 

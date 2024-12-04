@@ -43,8 +43,8 @@ function showRemoveButton(button) {
 }
 
 function deleteNote(note) {
-    EventTarget.parentNode.remove();
-    saveNotes();
+  EventTarget.parentNode.remove();
+  saveNotes();
 }
 
 // Add a button to create notes

@@ -6,6 +6,7 @@
     "32": "images/googs32.png"
   },
   "permissions": [
+    "scripting",
     "activeTab",
     "tabs",
     "storage"

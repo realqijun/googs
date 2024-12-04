@@ -18,9 +18,11 @@ buttonGetHighlight.addEventListener('click', () => {
       if (chrome.runtime.lastError) {
         console.error(chrome.runtime.lastError.message);
         elementHighlight.textContent = 'Error: Unable to retrieve highlighted text.';
+      } else if (!response?.highlightedText) {
+        elementHighlight.textContent = 'No text highlighted';
       } else {
-        // elementHighlight.textContent = response?.highlightedText || 'No text highlighted.';
-        inputPrompt.value = response?.highlightedText || '';
+        inputPrompt.value = response?.highlightedText;
+        buttonPrompt.removeAttribute('disabled');
       }
     });
   });
@@ -66,18 +68,17 @@ async function initDefaults() {
     );
     return;
   }
-  sliderTemperature.value = defaults.defaultTemperature;
-  if (defaults.defaultTopK > 3) {
-    sliderTopK.value = 3;
-    labelTopK.textContent = 3;
-  } else {
-    sliderTopK.value = defaults.defaultTopK;
-    labelTopK.textContent = defaults.defaultTopK;
-  }
+  
+  const initialTemperature = 0;
+  const initialTopK = 2;
+
+  sliderTemperature.value = initialTemperature;
+  labelTemperature.textContent = initialTemperature;
+
+  sliderTopK.value = initialTopK;
+  labelTopK.textContent = initialTopK;
+  
   sliderTopK.max = defaults.maxTopK;
-  labelTemperature.textContent = defaults.defaultTemperature;
-
-
 }
 
 initDefaults();

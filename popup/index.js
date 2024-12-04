@@ -19,7 +19,8 @@ buttonGetHighlight.addEventListener('click', () => {
         console.error(chrome.runtime.lastError.message);
         elementHighlight.textContent = 'Error: Unable to retrieve highlighted text.';
       } else {
-        elementHighlight.textContent = response?.highlightedText || 'No text highlighted.';
+        // elementHighlight.textContent = response?.highlightedText || 'No text highlighted.';
+        inputPrompt.value = response?.highlightedText || '';
       }
     });
   });
@@ -112,7 +113,7 @@ buttonPrompt.addEventListener('click', async () => {
   showLoading();
   try {
     const params = {
-      systemPrompt: 'You are a helpful and friendly assistant. Return your answers as plaintext only, do not include any HTML or other formatting.',
+      systemPrompt: 'Be a helpful assistant. Provide clear and concise answers as plain text only. Do not use markdown or HTML.',
       temperature: sliderTemperature.value,
       topK: sliderTopK.value
     };

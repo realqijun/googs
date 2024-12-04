@@ -6,9 +6,7 @@
     "32": "images/googs32.png"
   },
   "permissions": [
-    "tabGroups",
     "activeTab",
-    "scripting",
     "tabs",
     "storage"
   ],
@@ -22,8 +20,5 @@
       "matches": ["<all_urls>"],
       "run_at": "document_idle"
     }
-  ],
-  "background": {
-    "service_worker": "background.js"
-  }
+  ]
 }

@@ -80,9 +80,26 @@ const hideButton = document.createElement("button");
 hideButton.id = "hide-notes-button";
 hideButton.textContent = "Hide Notes";
 hideButton.onclick = () => {
-  notesContainer.style.display = notesContainer.style.display === "hidden" ? "block" : "hidden";
+  const notes = notesContainer.getElementsByClassName("note");
+  for (const note of notes) {
+    note.setAttribute("hidden", ""); // Hide each note
+  }
+  showButton.style.display = "inline-block";
 };
 document.body.appendChild(hideButton);
+
+const showButton = document.createElement("button");
+showButton.id = "show-notes-button";
+showButton.textContent = "Show Notes";
+showButton.style.display = "none";
+showButton.onclick = () => {
+  const notes = notesContainer.getElementsByClassName("note");
+  for (const note of notes) {
+    note.removeAttribute("hidden"); // Show each note
+  }
+  showButton.style.display = "none";
+};
+document.body.appendChild(showButton);
 
 // Listen for changes in the notes and save them
 notesContainer.addEventListener("input", saveNotes);
